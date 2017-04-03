@@ -1,5 +1,7 @@
 'use strict';
 
+let NewtonRaphson = require('NewtonRaphson');
+
 class EffectiveInterestCalculator {
 
   /**
@@ -29,7 +31,15 @@ class EffectiveInterestCalculator {
    * @return float
    */
   static withEqualPayments(principal, payment, numberOfMonths, guess) {
-    return 0.045;
+    let fx = function (x) {
+      return payment - payment * Math.pow(1 + x, -1 * numberOfMonths) - x * principal;
+    };
+
+    let fdx = function (x) {
+      return numberOfMonths * payment * Math.pow(1 + x, -1 * numberOfMonths - 1) - principal;
+    };
+
+    return 12 * NewtonRaphson.run(fx, fdx, guess);
   }
 }
 
