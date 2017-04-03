@@ -33,4 +33,4 @@ class EffectiveInterestCalculator {
   }
 }
 
-export default EffectiveInterestCalculator;
+module.exports = EffectiveInterestCalculator;

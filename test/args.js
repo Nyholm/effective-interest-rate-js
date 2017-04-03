@@ -1,11 +1,13 @@
+var argv = require('yargs').argv;
+
 module.exports = {
   getBrowser: function () {
-    if (process.argv[2]) {
-      return process.argv[2].replace('--browser=', '');
+    if (argv.browser === undefined) {
+      return 'PhantomJS';
     }
-    return 'PhantomJS';
+    return argv.browser;
   },
   isWatching: function () {
-    return process.argv[3] && process.argv[3] === '--watch=true';
+    return (argv.watch === undefined) ? false : argv.watch;
   }
 };

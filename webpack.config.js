@@ -20,7 +20,7 @@ var config = {
   output: {
     path: __dirname + '/lib',
     filename: outputFile,
-    library: 'Eir',
+    library: 'EffectiveInterestCalculator',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },

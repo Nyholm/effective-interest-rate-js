@@ -1,5 +1,6 @@
-// Karma configuration
-// Generated on Mon Apr 03 2017 18:56:04 GMT+0200 (CEST)
+var args = require('./test/args');
+var getBrowser = args.getBrowser;
+var isWatching = args.isWatching;
 
 module.exports = function(config) {
   config.set({
@@ -48,14 +49,14 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: [ getBrowser() ], // Chrome, PhantomJS, Firefox
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: !isWatching(),
 
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
   })
-}
+};
