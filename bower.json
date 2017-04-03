@@ -1,0 +1,20 @@
+{
+  "name": "nyholm/effective-interest-rate",
+  "description": "A library to calculate effective interest rate. Also know as XIRR or effective APR.",
+  "main": "lib/nyholm-eir.js",
+  "authors": [
+    "Tobias Nyholm"
+  ],
+  "license": "MIT",
+  "keywords": ["effective interest rate", "effective interest", "XIRR", "effective APR"],
+  "homepage": "https://github.com/Nyholm/effective-interest-rate-js",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "tests"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "effective-interest-rate",
+  "version": "0.1.0",
+  "description": "A library to calculate effective interest rate. Also know as XIRR or effective APR.",
+  "main": "lib/nyholm-eir.js",
+  "directories": {
+    "test": "src"
+  },
+  "scripts": {
+    "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack --progress --colors --watch",
+    "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack",
+    "test": "karma start ./karma.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nyholm/effective-interest-rate-js.git"
+  },
+  "keywords": [
+    "effective interest rate",
+    "effective interest",
+    "XIRR",
+    "effective APR"
+  ],
+  "author": "Tobias Nyholm <tobias.nyholm@gmai.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Nyholm/effective-interest-rate-js/issues"
+  },
+  "homepage": "https://github.com/Nyholm/effective-interest-rate-js#readme",
+  "devDependencies": {
+    "babel": "6.3.26",
+    "babel-core": "6.4.5",
+    "babel-eslint": "6.1.2",
+    "babel-loader": "6.2.1",
+    "babel-plugin-add-module-exports": "0.1.2",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-1": "6.3.13",
+    "babelify": "7.3.0",
+    "eslint": "1.10.3",
+    "eslint-loader": "1.2.1",
+    "jasmine-core": "^2.5.2",
+    "karma": "1.3.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "1.0.2",
+    "karma-source-map-support": "1.2.0",
+    "sinon-chai": "2.8.0",
+    "watchify": "3.7.0",
+    "webpack": "1.12.12"
+  }
+}
