@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "A library to calculate effective interest rate. Also know as XIRR or effective APR.",
   "main": "lib/effective-interest.js",
-  "directories": {
-    "test": "src"
-  },
   "scripts": {
     "dev": "WEBPACK_ENV=dev ./node_modules/.bin/webpack --progress --colors --watch",
     "build": "WEBPACK_ENV=build ./node_modules/.bin/webpack",
