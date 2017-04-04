@@ -17,18 +17,16 @@ effective interest?
 
 We guess that it is somewhere around 3%. 
 
-```php
-use Nyholm\EffectiveInterest\Calculator;
+```js
 
-$principal = 100000;
-$payment = 2400;
-$numberOfMonths = 48;
-$guess = 0.03;
-$calculator = new Calculator();
+let principal = 100000;
+let payment = 2400;
+let numberOfMonths = 48;
+let guess = 0.03;
 
-$interest = $calculator->withEqualPayments($principal, $payment, $numberOfMonths, $guess);
+let interest = EffectiveInterestCalculator.withEqualPayments(principal, payment, numberOfMonths, guess);
 
-echo $interest; // 0.07115
+console.log(interest); // 0.07115
 ```
 
 Correct answer is 7.12%
@@ -38,30 +36,27 @@ Correct answer is 7.12%
 What if the payments are not equal? The first payment has an administration fee of 400 Money and we like to pay the rest
 of the loan after 36 months. So the 36th payment will be 31 200 Money. 
 
-```php
-use Nyholm\EffectiveInterest\Calculator;
+```js
+let principal = 100000;
+let payment = 2400;
+let guess = 0.03;
+let startDate = '2017-04-30';
 
-$principal = 100000;
-$payment = 2400;
-$guess = 0.03;
-$startDate = '2017-04-30';
-$calculator = new Calculator();
-
-$payments = [
-    '2017-04-30' => $payment + 400,
-    '2017-05-31' => $payment,
-    '2017-06-30' => $payment,
-    '2017-07-31' => $payment,
+let payments = {
+    '2017-04-30': payment + 400,
+    '2017-05-31': payment,
+    '2017-06-30': payment,
+    '2017-07-31': payment,
     // More dates
-    '2019-12-31' => $payment,
-    '2020-01-31' => $payment,
-    '2020-02-28' => $payment,
-    '2020-03-31' => 31200,
-];
+    '2019-12-31': payment,
+    '2020-01-31': payment,
+    '2020-02-28': payment,
+    '2020-03-31': 31200,
+};
 
-$interest = $calculator->withSpecifiedPayments($principal, $startDate, $payments, $guess);
+let interest = EffectiveInterestCalculator.withSpecifiedPayments(principal, startDate, payments, guess);
 
-echo $interest; // 0.084870
+console.log(interest);  // 0.084870
 ```
 
 Correct answer is 8.49%
