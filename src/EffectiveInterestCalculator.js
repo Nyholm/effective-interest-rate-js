@@ -9,14 +9,43 @@ class EffectiveInterestCalculator {
    * administration fees at the first payment and/or when payments are irregular.
    *
    * @param principal
-   * @param startDate in format 'YYYY-mm-dd'
-   * @param payments  array with payment dates and values ['YYYY-mm-dd'=>int]
-   * @param guess     A guess what the interest may be. Between zero and one. Example 0.045
+   * @param startDateString in format 'YYYY-mm-dd'
+   * @param payments        array with payment dates and values ['YYYY-mm-dd'=>int]
+   * @param guess           A guess what the interest may be. Between zero and one. Example 0.045
    *
    * @return float
    */
-  static withSpecifiedPayments(principal, startDate, payments, guess) {
-    return 0.045;
+  static withSpecifiedPayments(principal, startDateString, payments, guess) {
+    let values = [-1 * principal];
+    let days = [1];
+    let startDate = new Date(startDateString);
+
+    Object.keys(payments).forEach(function (date) {
+      values.push(payments[date]);
+      days.push(1 + Math.ceil(Math.abs((new Date(date)).getTime() - startDate.getTime()) / (1000 * 3600 * 24)));
+    });
+
+    let fx = function (x) {
+      let sum = 0;
+
+      days.forEach(function (day, idx) {
+        sum += values[idx] * Math.pow(1 + x, (days[0] - day) / 365);
+      });
+
+      return sum;
+    };
+
+    let fdx = function (x) {
+      let sum = 0;
+
+      days.forEach(function (day, idx) {
+        sum += (1 / 365) * (days[0] - day) * values[idx] * Math.pow(1 + x, ((days[0] - day) / 365) - 1);
+      });
+
+      return sum;
+    };
+
+    return NewtonRaphson.run(fx, fdx, guess);
   }
 
   /**
@@ -31,6 +60,7 @@ class EffectiveInterestCalculator {
    * @return float
    */
   static withEqualPayments(principal, payment, numberOfMonths, guess) {
+
     let fx = function (x) {
       return payment - payment * Math.pow(1 + x, -1 * numberOfMonths) - x * principal;
     };

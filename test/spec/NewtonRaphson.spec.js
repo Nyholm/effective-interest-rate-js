@@ -1,7 +1,6 @@
 
 describe('Given an instance of NewtonRaphson', function () {
-  beforeEach(function () {
-  });
+  beforeEach(function () {});
   afterEach(function(){});
 
   describe('it calculates correct', function () {

@@ -8,16 +8,16 @@
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class NewtonRaphson {
-  precision = 7;
 
   static run(fx, fdx, guess) {
-    let errorLimit = Math.pow(10, -1 * this.precision);
-
+    let precision = 4;
+    let errorLimit = Math.pow(10, -1 * precision);
     let previousValue = 0;
 
     do {
-      previousValue = guess;
-      guess = previousValue - (fx(guess) / fdx(guess));
+      guess = Number(guess);
+      previousValue = Number(guess);
+      guess = previousValue - (Number(fx(guess)) / Number(fdx(guess)));
     } while (Math.abs(guess - previousValue) > errorLimit);
 
     return guess;
