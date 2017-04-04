@@ -3,7 +3,7 @@ var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var env = process.env.WEBPACK_ENV;
 var path = require('path');
 
-var appName = 'nyholm-eir';
+var appName = 'effective-interest';
 
 var plugins = [], outputFile;
 

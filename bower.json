@@ -1,7 +1,7 @@
 {
   "name": "nyholm/effective-interest-rate",
   "description": "A library to calculate effective interest rate. Also know as XIRR or effective APR.",
-  "main": "lib/nyholm-eir.js",
+  "main": "lib/effective-interest.js",
   "authors": [
     "Tobias Nyholm"
   ],
